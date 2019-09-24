@@ -1,0 +1,13 @@
+Tried following Python libraries to get checkbox data into json, csv. But failed to get data from checkboxes.
+Only checkbox data was image into pdf other data is into text format.
+I think optical mark recognition method will work. But it processes data one by one and from image data.
+
+Python Libraries Tried:
+    pdftotext, pdfminer, PyPDF2, tabula, pdttotree
+
+References:
+    1. https://towardsdatascience.com/check-mark-state-recognition-will-take-nlp-projects-to-the-next-level-668a1013408f
+        - not able to get dataset
+    2. https://stackoverflow.com/questions/47533875/how-to-extract-table-as-text-from-the-pdf-using-python
+    3. https://stackoverflow.com/questions/55777812/python-pdf-how-to-read-from-form-elements-like-checkbox
+    4. https://github.com/HazyResearch/pdftotree/blob/master/tests/test_basic.py
