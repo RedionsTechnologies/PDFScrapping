@@ -2,9 +2,9 @@ import PyPDF2
 import tabula
 from tabula import convert_into
 
-def readPdf():
+def readPdf(fileName = "demoData.pdf"):
     try:
-        pdfFileObj = open('demoData.pdf', 'rb')
+        pdfFileObj = open(fileName, 'rb')
         print("FILE OPENED with Object :", pdfFileObj)
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
         if pdfReader.isEncrypted:
@@ -20,22 +20,42 @@ def readPdf():
 
 
 #FOR READING TABLE DATA
-def readTablePdf():
+def readTablePdf(fileName = "demoData.pdf"):
     try:
         # Tabula Information
         # print(tabula.environment_info())
-        # df = tabula.read_pdf("11.pdf", output_format="json")
-        # df = tabula.read_pdf("demoData.pdf", multiple_tables=True, pages='all')
-        # df = tabula.read_pdf("11.pdf", multiple_tables=True)
-        # in order to print first 5 lines of Table
-        # print("Head of PDF", df.head())
-        # print("JSON DATA: \n", df)
+        i=1
+        while i>0 or i<0:
+            print("\n\n 1: Print DataFrame\n 2: Print JSON\n 3: Print Single Table\n 4: Print Multiple Tables ")
+            print(" 5: Save to JSON File\n 6: Save to CSV File")
+            i = int(input("Choose one of the options from above: "))
+            if i == 1:
+                df = tabula.read_pdf(fileName)
+                print("JSON DATA: \n", df)
+            elif i == 2:
+                df = tabula.read_pdf(fileName, output_format="json")
+                print("JSON DATA: \n", df)
+            elif i == 3:
+                df = tabula.read_pdf(fileName)
+                print("JSON DATA: \n", df)
+            elif i == 4:
+                df = tabula.read_pdf(fileName, multiple_tables=True, pages="all")
+                print("JSON DATA: \n", df)
+            elif i == 5:
+                ####### TO SAVE JSON INTO JSON FILE
+                output = input("ENTER OUTPUT FILE NAME")
+                convert_into(fileName, output, output_format="json", multiple_tables=True, pages='all')
+            elif i == 6:
+                ####### TO SAVE JSON INTO CSV FILE
+                output = input("ENTER OUTPUT FILE NAME")
+                convert_into(fileName, output, output_format="csv", multiple_tables=True, pages='all')
+            else:
+                break
 
-        ####### TO SAVE JSON INTO JSON FILE
-        convert_into("demoData.pdf", "output.json", output_format="json", multiple_tables=True, pages='all')
     except Exception as ex:
         print("Exception in opening file: ", ex)
 
 if __name__ == "__main__":
-    readPdf()
-    readTablePdf()
+    fileName = "demoData.pdf" #input("ENTER FILENAME: ")
+    # readPdf(fileName)
+    readTablePdf(fileName)
