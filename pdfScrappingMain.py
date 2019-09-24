@@ -22,12 +22,10 @@ def readPdf(fileName = "demoData.pdf"):
 #FOR READING TABLE DATA
 def readTablePdf(fileName = "demoData.pdf"):
     try:
-        # Tabula Information
-        # print(tabula.environment_info())
         i=1
         while i>0 or i<0:
-            print("\n\n 1: Print DataFrame\n 2: Print JSON\n 3: Print Single Table\n 4: Print Multiple Tables ")
-            print(" 5: Save to JSON File\n 6: Save to CSV File")
+            print("\n 1: Print DataFrame\n 2: Print JSON\n 3: Print Single Table\n 4: Print Multiple Tables ")
+            print(" 5: Save to JSON File\n 6: Save to CSV File\n 7: Tabula Info")
             i = int(input("Choose one of the options from above: "))
             if i == 1:
                 df = tabula.read_pdf(fileName)
@@ -49,6 +47,9 @@ def readTablePdf(fileName = "demoData.pdf"):
                 ####### TO SAVE JSON INTO CSV FILE
                 output = input("ENTER OUTPUT FILE NAME")
                 convert_into(fileName, output, output_format="csv", multiple_tables=True, pages='all')
+            elif i == 7:
+                #Tabula Information
+                print("TABULA INFORMATION:\n", tabula.environment_info())
             else:
                 break
 
