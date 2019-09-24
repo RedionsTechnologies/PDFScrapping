@@ -1,10 +1,10 @@
 import PyPDF2
 import tabula
-from pandas import DataFrame
+from tabula import convert_into
 
 def readPdf():
     try:
-        pdfFileObj = open('sample.pdf', 'rb')
+        pdfFileObj = open('demoData.pdf', 'rb')
         print("FILE OPENED with Object :", pdfFileObj)
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
         if pdfReader.isEncrypted:
@@ -24,13 +24,15 @@ def readTablePdf():
     try:
         # Tabula Information
         # print(tabula.environment_info())
-        df = tabula.read_pdf("demoData2.pdf", output_format="json")
-        print("JSON DATA: \n", df)
+        # df = tabula.read_pdf("11.pdf", output_format="json")
+        # df = tabula.read_pdf("demoData.pdf", multiple_tables=True, pages='all')
+        # df = tabula.read_pdf("11.pdf", multiple_tables=True)
         # in order to print first 5 lines of Table
         # print("Head of PDF", df.head())
-        # df = tabula.read_pdf("demoData2.pdf", multiple_tables = True)
-        # tabula.read_pdf("demoData2.pdf", area=(126, 149, 212, 462), pages=1)
-        # tabula.read_pdf("demoData2.pdf", output_format="json")
+        # print("JSON DATA: \n", df)
+
+        ####### TO SAVE JSON INTO JSON FILE
+        convert_into("demoData.pdf", "output.json", output_format="json", multiple_tables=True, pages='all')
     except Exception as ex:
         print("Exception in opening file: ", ex)
 
