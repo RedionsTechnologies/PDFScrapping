@@ -1,0 +1,13 @@
+{
+  "idCRD": "ctl00_ctl00_cphMainContent_ucADVHeader_lblCrdNumber",
+  "nameEntityManagerBusiness": "ctl00_ctl00_cphMainContent_cphAdvFormContent_IdentInfoPHSection_ctl00_lblPrimaryName",
+  "nameEntityManagerLegal": "ctl00_ctl00_cphMainContent_cphAdvFormContent_IdentInfoPHSection_ctl00_lblFullLegalName",
+  "idRegionSEC": "",
+  "idSEC": "",
+  "nameEntityManager": "",
+  "isExempt": "",
+  "periodData": "",
+  "yearData": "",
+  "quarterData": "",
+  "typeRegulationSEC": ""
+}
