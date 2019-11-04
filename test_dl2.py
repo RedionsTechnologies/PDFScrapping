@@ -5,8 +5,12 @@ ref: 1. https://medium.com/nybles/create-your-first-image-recognition-classifier
 
 Once method is working, I will update documents.
 """
-from keras.models import Sequential
-from keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
+from tensorflow_core.python.framework import ops
+ops.reset_default_graph()
+# from keras.models import Sequential
+# from tensorflow as tf
+from tensorflow_core.python.keras.models import Sequential
+from tensorflow_core.python.keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
 
 # Initializing the CNN
 classifier = Sequential()
@@ -21,13 +25,12 @@ classifier.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accur
 
 from keras.preprocessing.image import ImageDataGenerator
 
-train_datagen = ImageDataGenerator(rescale=1./255,
+train_datagen = ImageDataGenerator(rescale=1. / 255,
                                    shear_range=0.2,
                                    zoom_range=0.2,
                                    horizontal_flip=True)
 
-test_datagen = ImageDataGenerator(rescale=1./255)
-
+test_datagen = ImageDataGenerator(rescale=1. / 255)
 
 """
 check image size python
@@ -57,13 +60,14 @@ classifier.fit_generator(training_set,
 # Test random jpeg
 import numpy as np
 from keras.preprocessing import image
+
 test_image = image.load_img('random.jpg', target_size=(64, 64))
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis=0)
 result = classifier.predict(test_image)
 training_set.class_indices
 if result[0][0] >= 0.5:
-    prediction = 'dog'
+    prediction = 'checked'
 else:
-    prediction = 'cat'
+    prediction = 'unchecked'
 print(prediction)
