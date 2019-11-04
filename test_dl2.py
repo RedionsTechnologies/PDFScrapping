@@ -1,3 +1,10 @@
+"""
+Currently testing checkbox and radio buttons with cnn method for verification.
+ref: 1. https://medium.com/nybles/create-your-first-image-recognition-classifier-using-cnn-keras-and-tensorflow-backend-6eaab98d14dd
+     2. https://towardsdatascience.com/check-mark-state-recognition-will-take-nlp-projects-to-the-next-level-668a1013408f
+
+Once method is working, I will update documents.
+"""
 from keras.models import Sequential
 from keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
 
