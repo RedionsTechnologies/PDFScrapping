@@ -9,8 +9,10 @@ from tensorflow_core.python.framework import ops
 ops.reset_default_graph()
 # from keras.models import Sequential
 # from tensorflow as tf
-from tensorflow_core.python.keras.models import Sequential
-from tensorflow_core.python.keras.layers import Convolution2D, MaxPooling2D, Flatten, Dense
+# tensorflow_core.python.
+from keras.models import Sequential
+# from tensorflow_core.python.keras.layers import Convolution2D
+from keras.layers import MaxPooling2D, Flatten, Dense, Convolution2D
 
 # Initializing the CNN
 classifier = Sequential()
@@ -48,8 +50,9 @@ test_set = test_datagen.flow_from_directory('omr_dataset/test',
                                             batch_size=32,
                                             class_mode='binary')
 
-from IPython.display import display
-from PIL import Image
+# from IPython.display import display
+# from PIL import Image
+import PIL
 
 classifier.fit_generator(training_set,
                          steps_per_epoch=4000,
@@ -57,17 +60,35 @@ classifier.fit_generator(training_set,
                          validation_data=test_set,
                          validation_steps=800)
 
+# Save trained keras model into file for further loading.
+# cause training model again takes more than 60 minutes.
+# Todo: Update logic of script to check for saved model first else train model.
+classifier.save("classifier_checkbox.h5")
+
 # Test random jpeg
 import numpy as np
 from keras.preprocessing import image
 
+# test checked box
 test_image = image.load_img('random.jpg', target_size=(64, 64))
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis=0)
 result = classifier.predict(test_image)
 training_set.class_indices
 if result[0][0] >= 0.5:
-    prediction = 'checked'
-else:
     prediction = 'unchecked'
+else:
+    prediction = 'checked'
 print(prediction)
+
+# test unchecked image box
+test_image1 = image.load_img('random1.jpg', target_size=(64, 64))
+test_image1 = image.img_to_array(test_image1)
+test_image1 = np.expand_dims(test_image1, axis=0)
+result1 = classifier.predict(test_image1)
+training_set.class_indices
+if result1[0][0] >= 0.5:
+    prediction1 = 'unchecked'
+else:
+    prediction1 = 'checked'
+print(prediction1)
