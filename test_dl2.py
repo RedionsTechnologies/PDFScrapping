@@ -59,7 +59,6 @@ else:
 
     # from IPython.display import display
 
-
     classifier.fit_generator(training_set,
                              steps_per_epoch=4000,
                              epochs=10,
@@ -81,7 +80,7 @@ test_image = image.load_img('random.jpg', target_size=(64, 64))
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis=0)
 result = classifier.predict(test_image)
-training_set.class_indices
+# training_set.class_indices
 if result[0][0] >= 0.5:
     prediction = 'unchecked'
 else:
