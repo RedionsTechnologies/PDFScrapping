@@ -4,7 +4,10 @@ Python POC for extracting PDF data to JSON
 
 
 ## Checkbox Images Verification
-Checkbox image is processed to check it's status for checked or unchecked. </br>
+Checkbox image is processed to check it's status for checked or unchecked. <br>
+It uses Convolutional Neural Network (CNN) to identify images and objects into images.
+We are using cnn deep learning model to do that. For training purpose we created image dataset manually by exporting images from pdf file.
+It automatically recognized category of images from directory names.
 
 
 ## Setting up Virtual Environment and Installing Packages
