@@ -93,7 +93,7 @@ pdftabextract==0.3.0
 pdftotree==0.4.0
 pexpect==4.7.0
 pickleshare==0.7.5
-Pillow==6.2.1
+Pillow==8.1.1
 prometheus-client==0.7.1
 prompt-toolkit==2.0.10
 protobuf==3.10.0
