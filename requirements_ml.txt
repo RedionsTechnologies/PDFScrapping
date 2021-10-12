@@ -78,7 +78,7 @@ numpy==1.17.3
 oauthlib==3.1.0
 olefile==0.46
 omr==0.0.73
-opencv-python==4.1.1.26
+opencv-python==4.2.0.32
 openpyxl==3.0.1
 opt-einsum==3.1.0
 packaging==19.2
