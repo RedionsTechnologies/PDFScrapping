@@ -135,7 +135,7 @@ soupsieve==1.9.5
 SpeechRecognition==3.8.1
 tabula-py==1.4.1
 tensorboard==2.0.1
-tensorflow==2.0.0
+tensorflow==2.6.4
 tensorflow-estimator==2.0.1
 tensorflow-gpu==2.0.0
 termcolor==1.1.0
